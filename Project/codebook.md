@@ -1,290 +1,108 @@
-Codebook
-========
-Codebook was generated on 2014-04-17 09:04:47 during the same process that generated the dataset. See `run_analysis.md` or `run_analysis.html` for details on dataset creation.
+# Code Book
 
-Variable list and descriptions
-------------------------------
+## ID Fields
 
-Variable name    | Description
------------------|------------
-subject          | ID the subject who performed the activity for each window sample. Its range is from 1 to 30.
-activity         | Activity name
-featDomain       | Feature: Time domain signal or frequency domain signal (Time or Freq)
-featInstrument   | Feature: Measuring instrument (Accelerometer or Gyroscope)
-featAcceleration | Feature: Acceleration signal (Body or Gravity)
-featVariable     | Feature: Variable (Mean or SD)
-featJerk         | Feature: Jerk signal
-featMagnitude    | Feature: Magnitude of the signals calculated using the Euclidean norm
-featAxis         | Feature: 3-axial signals in the X, Y and Z directions (X, Y, or Z)
-featCount        | Feature: Count of data points used to compute `average`
-featAverage      | Feature: Average of each variable for each activity and each subject
+* `subject` - The participant ("subject") ID
+* `activity` - The label of the activity performed when the corresponding measurements were taken
 
-Dataset structure
------------------
+## Extracted Feature Fields
 
+* `tBodyAcc-mean()-X` (column `1`)
+* `tBodyAcc-mean()-Y` (column `2`)
+* `tBodyAcc-mean()-Z` (column `3`)
+* `tBodyAcc-std()-X` (column `4`)
+* `tBodyAcc-std()-Y` (column `5`)
+* `tBodyAcc-std()-Z` (column `6`)
+* `tGravityAcc-mean()-X` (column `41`)
+* `tGravityAcc-mean()-Y` (column `42`)
+* `tGravityAcc-mean()-Z` (column `43`)
+* `tGravityAcc-std()-X` (column `44`)
+* `tGravityAcc-std()-Y` (column `45`)
+* `tGravityAcc-std()-Z` (column `46`)
+* `tBodyAccJerk-mean()-X` (column `81`)
+* `tBodyAccJerk-mean()-Y` (column `82`)
+* `tBodyAccJerk-mean()-Z` (column `83`)
+* `tBodyAccJerk-std()-X` (column `84`)
+* `tBodyAccJerk-std()-Y` (column `85`)
+* `tBodyAccJerk-std()-Z` (column `86`)
+* `tBodyGyro-mean()-X` (column `121`)
+* `tBodyGyro-mean()-Y` (column `122`)
+* `tBodyGyro-mean()-Z` (column `123`)
+* `tBodyGyro-std()-X` (column `124`)
+* `tBodyGyro-std()-Y` (column `125`)
+* `tBodyGyro-std()-Z` (column `126`)
+* `tBodyGyroJerk-mean()-X` (column `161`)
+* `tBodyGyroJerk-mean()-Y` (column `162`)
+* `tBodyGyroJerk-mean()-Z` (column `163`)
+* `tBodyGyroJerk-std()-X` (column `164`)
+* `tBodyGyroJerk-std()-Y` (column `165`)
+* `tBodyGyroJerk-std()-Z` (column `166`)
+* `tBodyAccMag-mean()` (column `201`)
+* `tBodyAccMag-std()` (column `202`)
+* `tGravityAccMag-mean()` (column `214`)
+* `tGravityAccMag-std()` (column `215`)
+* `tBodyAccJerkMag-mean()` (column `227`)
+* `tBodyAccJerkMag-std()` (column `228`)
+* `tBodyGyroMag-mean()` (column `240`)
+* `tBodyGyroMag-std()` (column `241`)
+* `tBodyGyroJerkMag-mean()` (column `253`)
+* `tBodyGyroJerkMag-std()` (column `254`)
+* `fBodyAcc-mean()-X` (column `266`)
+* `fBodyAcc-mean()-Y` (column `267`)
+* `fBodyAcc-mean()-Z` (column `268`)
+* `fBodyAcc-std()-X` (column `269`)
+* `fBodyAcc-std()-Y` (column `270`)
+* `fBodyAcc-std()-Z` (column `271`)
+* `fBodyAccJerk-mean()-X` (column `345`)
+* `fBodyAccJerk-mean()-Y` (column `346`)
+* `fBodyAccJerk-mean()-Z` (column `347`)
+* `fBodyAccJerk-std()-X` (column `348`)
+* `fBodyAccJerk-std()-Y` (column `349`)
+* `fBodyAccJerk-std()-Z` (column `350`)
+* `fBodyGyro-mean()-X` (column `424`)
+* `fBodyGyro-mean()-Y` (column `425`)
+* `fBodyGyro-mean()-Z` (column `426`)
+* `fBodyGyro-std()-X` (column `427`)
+* `fBodyGyro-std()-Y` (column `428`)
+* `fBodyGyro-std()-Z` (column `429`)
+* `fBodyAccMag-mean()` (column `503`)
+* `fBodyAccMag-std()` (column `504`)
+* `fBodyBodyAccJerkMag-mean()` (column `516`)
+* `fBodyBodyAccJerkMag-std()` (column `517`)
+* `fBodyBodyGyroMag-mean()` (column `529`)
+* `fBodyBodyGyroMag-std()` (column `530`)
+* `fBodyBodyGyroJerkMag-mean()` (column `542`)
+* `fBodyBodyGyroJerkMag-std()` (column `543`)
 
-```r
-str(dtTidy)
+## Activity Labels
+
+* `WALKING` (value `1`)
+* `WALKING_UPSTAIRS` (value `2`)
+* `WALKING_DOWNSTAIRS` (value `3`)
+* `SITTING` (value `4`)
+* `STANDING` (value `5`)
+* `LAYING` (value `6`)
+
+## Extracted Features Vector
+
+```R
+c(1, 2, 3, 4, 5, 6, 41, 42, 43, 44, 45, 46, 81, 82, 83, 84, 85, 86, 121, 122, 123, 124, 125, 126, 161, 162, 163, 164, 165, 166, 201, 202, 214, 215, 227, 228, 240, 241, 253, 254, 266, 267, 268, 269, 270, 271, 345, 346, 347, 348, 349, 350, 424, 425, 426, 427, 428, 429, 503, 504, 516, 517, 529, 530, 542, 543)
 ```
 
-```
-## Classes 'data.table' and 'data.frame':	11880 obs. of  11 variables:
-##  $ subject         : int  1 1 1 1 1 1 1 1 1 1 ...
-##  $ activity        : Factor w/ 6 levels "LAYING","SITTING",..: 1 1 1 1 1 1 1 1 1 1 ...
-##  $ featDomain      : Factor w/ 2 levels "Time","Freq": 1 1 1 1 1 1 1 1 1 1 ...
-##  $ featAcceleration: Factor w/ 3 levels NA,"Body","Gravity": 1 1 1 1 1 1 1 1 1 1 ...
-##  $ featInstrument  : Factor w/ 2 levels "Accelerometer",..: 2 2 2 2 2 2 2 2 2 2 ...
-##  $ featJerk        : Factor w/ 2 levels NA,"Jerk": 1 1 1 1 1 1 1 1 2 2 ...
-##  $ featMagnitude   : Factor w/ 2 levels NA,"Magnitude": 1 1 1 1 1 1 2 2 1 1 ...
-##  $ featVariable    : Factor w/ 2 levels "Mean","SD": 1 1 1 2 2 2 1 2 1 1 ...
-##  $ featAxis        : Factor w/ 4 levels NA,"X","Y","Z": 2 3 4 2 3 4 1 1 2 3 ...
-##  $ count           : int  50 50 50 50 50 50 50 50 50 50 ...
-##  $ average         : num  -0.0166 -0.0645 0.1487 -0.8735 -0.9511 ...
-##  - attr(*, "sorted")= chr  "subject" "activity" "featDomain" "featAcceleration" ...
-##  - attr(*, ".internal.selfref")=<externalptr>
+## Extracted Feature Names Vector
+
+```R
+c("tBodyAcc-mean()-X", "tBodyAcc-mean()-Y", "tBodyAcc-mean()-Z", "tBodyAcc-std()-X", "tBodyAcc-std()-Y", "tBodyAcc-std()-Z", "tGravityAcc-mean()-X", "tGravityAcc-mean()-Y", "tGravityAcc-mean()-Z", "tGravityAcc-std()-X", "tGravityAcc-std()-Y", "tGravityAcc-std()-Z", "tBodyAccJerk-mean()-X", "tBodyAccJerk-mean()-Y", "tBodyAccJerk-mean()-Z", "tBodyAccJerk-std()-X", "tBodyAccJerk-std()-Y", "tBodyAccJerk-std()-Z", "tBodyGyro-mean()-X", "tBodyGyro-mean()-Y", "tBodyGyro-mean()-Z", "tBodyGyro-std()-X", "tBodyGyro-std()-Y", "tBodyGyro-std()-Z", "tBodyGyroJerk-mean()-X", "tBodyGyroJerk-mean()-Y", "tBodyGyroJerk-mean()-Z", "tBodyGyroJerk-std()-X", "tBodyGyroJerk-std()-Y", "tBodyGyroJerk-std()-Z", "tBodyAccMag-mean()", "tBodyAccMag-std()", "tGravityAccMag-mean()", "tGravityAccMag-std()", "tBodyAccJerkMag-mean()", "tBodyAccJerkMag-std()", "tBodyGyroMag-mean()", "tBodyGyroMag-std()", "tBodyGyroJerkMag-mean()", "tBodyGyroJerkMag-std()", "fBodyAcc-mean()-X", "fBodyAcc-mean()-Y", "fBodyAcc-mean()-Z", "fBodyAcc-std()-X", "fBodyAcc-std()-Y", "fBodyAcc-std()-Z", "fBodyAccJerk-mean()-X", "fBodyAccJerk-mean()-Y", "fBodyAccJerk-mean()-Z", "fBodyAccJerk-std()-X", "fBodyAccJerk-std()-Y", "fBodyAccJerk-std()-Z", "fBodyGyro-mean()-X", "fBodyGyro-mean()-Y", "fBodyGyro-mean()-Z", "fBodyGyro-std()-X", "fBodyGyro-std()-Y", "fBodyGyro-std()-Z", "fBodyAccMag-mean()", "fBodyAccMag-std()", "fBodyBodyAccJerkMag-mean()", "fBodyBodyAccJerkMag-std()", "fBodyBodyGyroMag-mean()", "fBodyBodyGyroMag-std()", "fBodyBodyGyroJerkMag-mean()", "fBodyBodyGyroJerkMag-std()")
 ```
 
+## Activities Vector
 
-List the key variables in the data table
-----------------------------------------
-
-
-```r
-key(dtTidy)
+```R
+c(1, 2, 3, 4, 5, 6)
 ```
 
+## Activity Names Vector
+
+```R
+c("WALKING", "WALKING_UPSTAIRS", "WALKING_DOWNSTAIRS", "SITTING", "STANDING", "LAYING")
 ```
-## [1] "subject"          "activity"         "featDomain"      
-## [4] "featAcceleration" "featInstrument"   "featJerk"        
-## [7] "featMagnitude"    "featVariable"     "featAxis"
-```
-
-
-Show a few rows of the dataset
-------------------------------
-
-
-```r
-dtTidy
-```
-
-```
-##        subject         activity featDomain featAcceleration featInstrument
-##     1:       1           LAYING       Time               NA      Gyroscope
-##     2:       1           LAYING       Time               NA      Gyroscope
-##     3:       1           LAYING       Time               NA      Gyroscope
-##     4:       1           LAYING       Time               NA      Gyroscope
-##     5:       1           LAYING       Time               NA      Gyroscope
-##    ---                                                                    
-## 11876:      30 WALKING_UPSTAIRS       Freq             Body  Accelerometer
-## 11877:      30 WALKING_UPSTAIRS       Freq             Body  Accelerometer
-## 11878:      30 WALKING_UPSTAIRS       Freq             Body  Accelerometer
-## 11879:      30 WALKING_UPSTAIRS       Freq             Body  Accelerometer
-## 11880:      30 WALKING_UPSTAIRS       Freq             Body  Accelerometer
-##        featJerk featMagnitude featVariable featAxis count  average
-##     1:       NA            NA         Mean        X    50 -0.01655
-##     2:       NA            NA         Mean        Y    50 -0.06449
-##     3:       NA            NA         Mean        Z    50  0.14869
-##     4:       NA            NA           SD        X    50 -0.87354
-##     5:       NA            NA           SD        Y    50 -0.95109
-##    ---                                                            
-## 11876:     Jerk            NA           SD        X    65 -0.56157
-## 11877:     Jerk            NA           SD        Y    65 -0.61083
-## 11878:     Jerk            NA           SD        Z    65 -0.78475
-## 11879:     Jerk     Magnitude         Mean       NA    65 -0.54978
-## 11880:     Jerk     Magnitude           SD       NA    65 -0.58088
-```
-
-
-Summary of variables
---------------------
-
-
-```r
-summary(dtTidy)
-```
-
-```
-##     subject                   activity    featDomain  featAcceleration
-##  Min.   : 1.0   LAYING            :1980   Time:7200   NA     :4680    
-##  1st Qu.: 8.0   SITTING           :1980   Freq:4680   Body   :5760    
-##  Median :15.5   STANDING          :1980               Gravity:1440    
-##  Mean   :15.5   WALKING           :1980                               
-##  3rd Qu.:23.0   WALKING_DOWNSTAIRS:1980                               
-##  Max.   :30.0   WALKING_UPSTAIRS  :1980                               
-##        featInstrument featJerk      featMagnitude  featVariable featAxis 
-##  Accelerometer:7200   NA  :7200   NA       :8640   Mean:5940    NA:3240  
-##  Gyroscope    :4680   Jerk:4680   Magnitude:3240   SD  :5940    X :2880  
-##                                                                 Y :2880  
-##                                                                 Z :2880  
-##                                                                          
-##                                                                          
-##      count         average       
-##  Min.   :36.0   Min.   :-0.9977  
-##  1st Qu.:49.0   1st Qu.:-0.9621  
-##  Median :54.5   Median :-0.4699  
-##  Mean   :57.2   Mean   :-0.4844  
-##  3rd Qu.:63.2   3rd Qu.:-0.0784  
-##  Max.   :95.0   Max.   : 0.9745
-```
-
-
-List all possible combinations of features
-------------------------------------------
-
-
-```r
-dtTidy[, .N, by = c(names(dtTidy)[grep("^feat", names(dtTidy))])]
-```
-
-```
-##     featDomain featAcceleration featInstrument featJerk featMagnitude
-##  1:       Time               NA      Gyroscope       NA            NA
-##  2:       Time               NA      Gyroscope       NA            NA
-##  3:       Time               NA      Gyroscope       NA            NA
-##  4:       Time               NA      Gyroscope       NA            NA
-##  5:       Time               NA      Gyroscope       NA            NA
-##  6:       Time               NA      Gyroscope       NA            NA
-##  7:       Time               NA      Gyroscope       NA     Magnitude
-##  8:       Time               NA      Gyroscope       NA     Magnitude
-##  9:       Time               NA      Gyroscope     Jerk            NA
-## 10:       Time               NA      Gyroscope     Jerk            NA
-## 11:       Time               NA      Gyroscope     Jerk            NA
-## 12:       Time               NA      Gyroscope     Jerk            NA
-## 13:       Time               NA      Gyroscope     Jerk            NA
-## 14:       Time               NA      Gyroscope     Jerk            NA
-## 15:       Time               NA      Gyroscope     Jerk     Magnitude
-## 16:       Time               NA      Gyroscope     Jerk     Magnitude
-## 17:       Time             Body  Accelerometer       NA            NA
-## 18:       Time             Body  Accelerometer       NA            NA
-## 19:       Time             Body  Accelerometer       NA            NA
-## 20:       Time             Body  Accelerometer       NA            NA
-## 21:       Time             Body  Accelerometer       NA            NA
-## 22:       Time             Body  Accelerometer       NA            NA
-## 23:       Time             Body  Accelerometer       NA     Magnitude
-## 24:       Time             Body  Accelerometer       NA     Magnitude
-## 25:       Time             Body  Accelerometer     Jerk            NA
-## 26:       Time             Body  Accelerometer     Jerk            NA
-## 27:       Time             Body  Accelerometer     Jerk            NA
-## 28:       Time             Body  Accelerometer     Jerk            NA
-## 29:       Time             Body  Accelerometer     Jerk            NA
-## 30:       Time             Body  Accelerometer     Jerk            NA
-## 31:       Time             Body  Accelerometer     Jerk     Magnitude
-## 32:       Time             Body  Accelerometer     Jerk     Magnitude
-## 33:       Time          Gravity  Accelerometer       NA            NA
-## 34:       Time          Gravity  Accelerometer       NA            NA
-## 35:       Time          Gravity  Accelerometer       NA            NA
-## 36:       Time          Gravity  Accelerometer       NA            NA
-## 37:       Time          Gravity  Accelerometer       NA            NA
-## 38:       Time          Gravity  Accelerometer       NA            NA
-## 39:       Time          Gravity  Accelerometer       NA     Magnitude
-## 40:       Time          Gravity  Accelerometer       NA     Magnitude
-## 41:       Freq               NA      Gyroscope       NA            NA
-## 42:       Freq               NA      Gyroscope       NA            NA
-## 43:       Freq               NA      Gyroscope       NA            NA
-## 44:       Freq               NA      Gyroscope       NA            NA
-## 45:       Freq               NA      Gyroscope       NA            NA
-## 46:       Freq               NA      Gyroscope       NA            NA
-## 47:       Freq               NA      Gyroscope       NA     Magnitude
-## 48:       Freq               NA      Gyroscope       NA     Magnitude
-## 49:       Freq               NA      Gyroscope     Jerk     Magnitude
-## 50:       Freq               NA      Gyroscope     Jerk     Magnitude
-## 51:       Freq             Body  Accelerometer       NA            NA
-## 52:       Freq             Body  Accelerometer       NA            NA
-## 53:       Freq             Body  Accelerometer       NA            NA
-## 54:       Freq             Body  Accelerometer       NA            NA
-## 55:       Freq             Body  Accelerometer       NA            NA
-## 56:       Freq             Body  Accelerometer       NA            NA
-## 57:       Freq             Body  Accelerometer       NA     Magnitude
-## 58:       Freq             Body  Accelerometer       NA     Magnitude
-## 59:       Freq             Body  Accelerometer     Jerk            NA
-## 60:       Freq             Body  Accelerometer     Jerk            NA
-## 61:       Freq             Body  Accelerometer     Jerk            NA
-## 62:       Freq             Body  Accelerometer     Jerk            NA
-## 63:       Freq             Body  Accelerometer     Jerk            NA
-## 64:       Freq             Body  Accelerometer     Jerk            NA
-## 65:       Freq             Body  Accelerometer     Jerk     Magnitude
-## 66:       Freq             Body  Accelerometer     Jerk     Magnitude
-##     featDomain featAcceleration featInstrument featJerk featMagnitude
-##     featVariable featAxis   N
-##  1:         Mean        X 180
-##  2:         Mean        Y 180
-##  3:         Mean        Z 180
-##  4:           SD        X 180
-##  5:           SD        Y 180
-##  6:           SD        Z 180
-##  7:         Mean       NA 180
-##  8:           SD       NA 180
-##  9:         Mean        X 180
-## 10:         Mean        Y 180
-## 11:         Mean        Z 180
-## 12:           SD        X 180
-## 13:           SD        Y 180
-## 14:           SD        Z 180
-## 15:         Mean       NA 180
-## 16:           SD       NA 180
-## 17:         Mean        X 180
-## 18:         Mean        Y 180
-## 19:         Mean        Z 180
-## 20:           SD        X 180
-## 21:           SD        Y 180
-## 22:           SD        Z 180
-## 23:         Mean       NA 180
-## 24:           SD       NA 180
-## 25:         Mean        X 180
-## 26:         Mean        Y 180
-## 27:         Mean        Z 180
-## 28:           SD        X 180
-## 29:           SD        Y 180
-## 30:           SD        Z 180
-## 31:         Mean       NA 180
-## 32:           SD       NA 180
-## 33:         Mean        X 180
-## 34:         Mean        Y 180
-## 35:         Mean        Z 180
-## 36:           SD        X 180
-## 37:           SD        Y 180
-## 38:           SD        Z 180
-## 39:         Mean       NA 180
-## 40:           SD       NA 180
-## 41:         Mean        X 180
-## 42:         Mean        Y 180
-## 43:         Mean        Z 180
-## 44:           SD        X 180
-## 45:           SD        Y 180
-## 46:           SD        Z 180
-## 47:         Mean       NA 180
-## 48:           SD       NA 180
-## 49:         Mean       NA 180
-## 50:           SD       NA 180
-## 51:         Mean        X 180
-## 52:         Mean        Y 180
-## 53:         Mean        Z 180
-## 54:           SD        X 180
-## 55:           SD        Y 180
-## 56:           SD        Z 180
-## 57:         Mean       NA 180
-## 58:           SD       NA 180
-## 59:         Mean        X 180
-## 60:         Mean        Y 180
-## 61:         Mean        Z 180
-## 62:           SD        X 180
-## 63:           SD        Y 180
-## 64:           SD        Z 180
-## 65:         Mean       NA 180
-## 66:           SD       NA 180
-##     featVariable featAxis   N
-```
-
-
-Save to file
-------------
-
-Save data table objects to a tab-delimited text file called `DatasetHumanActivityRecognitionUsingSmartphones.txt`.
-
-
-```r
-f <- file.path(path, "DatasetHumanActivityRecognitionUsingSmartphones.txt")
-write.table(dtTidy, f, quote = FALSE, sep = "\t", row.names = FALSE)
-```
-
